@@ -15,7 +15,7 @@
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="Waktu Shalat" />
+            app:title="@string/app_name" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -26,7 +26,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:clickable="true"
-        android:contentDescription="Ubah Tanggal"
+        android:contentDescription="@string/edit_date"
         android:onClick="change"
         app:srcCompat="@drawable/ic_baseline_calendar_today_24" />
 
@@ -37,7 +37,7 @@
         android:layout_gravity="bottom|start"
         android:layout_margin="16dp"
         android:clickable="true"
-        android:contentDescription="Ubah Lokasi"
+        android:contentDescription="@string/edit_loc"
         android:onClick="locate"
         app:srcCompat="@drawable/ic_baseline_location_on_24" />
 
@@ -89,7 +89,7 @@
                             style="@style/TextAppearance.MaterialComponents.Subtitle1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textAlignment="center"></TextView>
+                            android:textAlignment="center" />
 
                     </LinearLayout>
 
@@ -112,7 +112,7 @@
                             style="@android:style/TextAppearance.Material.Title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Subuh" />
+                            android:text="@string/fajr" />
 
                         <TextView
                             android:id="@+id/Subuh"
@@ -141,7 +141,7 @@
                             style="@android:style/TextAppearance.Material.Title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Dzuhur" />
+                            android:text="@string/dhuhr" />
 
                         <TextView
                             android:id="@+id/Dzuhur"
@@ -170,7 +170,7 @@
                             style="@android:style/TextAppearance.Material.Title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Ashar" />
+                            android:text="@string/asr" />
 
                         <TextView
                             android:id="@+id/Ashar"
@@ -199,7 +199,7 @@
                             style="@android:style/TextAppearance.Material.Title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Maghrib" />
+                            android:text="@string/maghrib" />
 
                         <TextView
                             android:id="@+id/Maghrib"
@@ -228,7 +228,7 @@
                             style="@android:style/TextAppearance.Material.Title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Isya" />
+                            android:text="@string/isha" />
 
                         <TextView
                             android:id="@+id/Isya"

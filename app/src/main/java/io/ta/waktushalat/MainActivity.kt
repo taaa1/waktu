@@ -22,6 +22,7 @@ import com.batoulapps.adhan.*
 import com.batoulapps.adhan.data.DateComponents
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.switchmaterial.SwitchMaterial
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.Exception
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        title = "Waktu Shalat"
+        title = getString(R.string.app_name)
         setSupportActionBar(findViewById(R.id.topAppBar))
 
         val requestPermissionLauncher =
@@ -46,9 +47,9 @@ class MainActivity : AppCompatActivity() {
                         Manifest.permission.ACCESS_COARSE_LOCATION
                     ) == PackageManager.PERMISSION_DENIED) {
                         MaterialAlertDialogBuilder(this)
-                            .setTitle("Izin tidak diberikan")
-                            .setMessage("Berikan izin lokasi agar aplikasi berjalan dengan benar")
-                            .setPositiveButton("Pengaturan") { _, _ ->
+                            .setTitle(getString(R.string.perm_denied))
+                            .setMessage(getString(R.string.perm_denied_desc))
+                            .setPositiveButton(getString(R.string.settings)) { _, _ ->
                                 val i = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                                 i.data = Uri.fromParts("package", packageName, null)
                                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -114,14 +115,14 @@ class MainActivity : AppCompatActivity() {
     fun showErr() {
         if(err) {
             MaterialAlertDialogBuilder(this)
-                .setTitle("Gagal")
-                .setMessage("Terjadi kesalahan saat memuat jadwal shalat")
+                .setTitle(getString(R.string.failed))
+                .setMessage(getString(R.string.error_load_times))
                 .setIcon(R.drawable.ic_baseline_error_24)
-                .setNeutralButton("Ubah lokasi") {d, _ ->
+                .setNeutralButton(getString(R.string.edit_location)) {d, _ ->
                     d.dismiss()
                     locate(findViewById(R.id.top))
                 }
-                .setPositiveButton("Coba lagi") {d, _ ->
+                .setPositiveButton(getString(R.string.retry)) {d, _ ->
                     d.dismiss()
                     getL()
                 }
@@ -135,7 +136,7 @@ class MainActivity : AppCompatActivity() {
         val s = LayoutInflater.from(this).inflate(R.layout.coord, findViewById(R.id.top), false)
         val a = s.findViewById<EditText>(R.id.latitude)
         val b = s.findViewById<EditText>(R.id.Longitude)
-        val c = s.findViewById<Switch>(R.id.otomatis)
+        val c = s.findViewById<SwitchMaterial>(R.id.otomatis)
         c.isChecked = m.getBoolean("auto", true)
         a.isEnabled = !c.isChecked
         b.isEnabled = !c.isChecked
@@ -146,10 +147,10 @@ class MainActivity : AppCompatActivity() {
         a.setText(m.getString("lat", "0.0"))
         b.setText(m.getString("lon", "0.0"))
         MaterialAlertDialogBuilder(this)
-            .setTitle("Lokasi")
+            .setTitle(getString(R.string.location))
             .setView(s)
             .setIcon(R.drawable.ic_baseline_location_on_24)
-            .setPositiveButton("Ubah") { _, _ ->
+            .setPositiveButton(getString(R.string.save)) { _, _ ->
                 val y = m.edit()
                 if(c.isChecked) {
                     y.putBoolean("auto", true)

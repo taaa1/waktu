@@ -1,3 +1,22 @@
 <resources>
-    <string name="app_name">Waktu Shalat</string>
+    <string name="app_name">Prayer Times</string>
+    <string name="perm_denied">Permission denied</string>
+    <string name="perm_denied_desc">Allow access to your location so the app works correctly</string>
+    <string name="settings">Settings</string>
+    <string name="failed">Failed</string>
+    <string name="error_load_times">An error occurred when loading prayer times</string>
+    <string name="edit_location">Edit location</string>
+    <string name="retry">Retry</string>
+    <string name="location">Location</string>
+    <string name="save">Save</string>
+    <string name="edit_date">Edit Date</string>
+    <string name="edit_loc">Edit Location</string>
+    <string name="fajr">Fajr</string>
+    <string name="dhuhr">Dhuhr</string>
+    <string name="asr">Asr</string>
+    <string name="maghrib">Maghrib</string>
+    <string name="isha">Isha</string>
+    <string name="auto">Auto</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
 </resources>

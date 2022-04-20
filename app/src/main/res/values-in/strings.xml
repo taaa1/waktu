@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Waktu Shalat</string>
+    <string name="perm_denied">Izin tidak diberikan</string>
+    <string name="perm_denied_desc">Berikan izin lokasi agar aplikasi berjalan dengan benar</string>
+    <string name="settings">Pengaturan</string>
+    <string name="failed">Gagal</string>
+    <string name="error_load_times">Sebuah kesalahan terjadi saat memuat jadwal shalat</string>
+    <string name="edit_location">Ubah lokasi</string>
+    <string name="retry">Coba lagi</string>
+    <string name="location">Lokasi</string>
+    <string name="save">Simpan</string>
+    <string name="edit_date">Ubah Tanggal</string>
+    <string name="edit_loc">Ubah Lokasi</string>
+    <string name="fajr">Subuh</string>
+    <string name="dhuhr">Dzuhur</string>
+    <string name="asr">Ashar</string>
+    <string name="maghrib">Maghrib</string>
+    <string name="isha">Isya</string>
+    <string name="auto">Otomatis</string>
+    <string name="latitude">Lintang</string>
+    <string name="longitude">Bujur</string>
+</resources>
