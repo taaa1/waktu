@@ -1,26 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
-    <style name="Theme.WaktuShalat" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
-        <!--<item name="colorPrimary">#50d896</item>
-        <item name="colorPrimaryVariant">#00914b</item>
-        <item name="colorOnPrimary">@color/black</item>
-
-        <item name="colorSecondary">#e8d34e</item>
-        <item name="colorSecondaryVariant">#ccb000</item>
-        <item name="colorOnSecondary">@color/black</item>-->
-
-        <item name="colorPrimary">@color/material_dynamic_primary80</item>
-        <item name="colorPrimaryContainer">@color/material_dynamic_primary30</item>
-        <item name="colorOnPrimary">@color/material_dynamic_primary20</item>
-        <item name="colorOnPrimaryContainer">@color/material_dynamic_primary90</item>
-
-        <item name="colorSecondary">@color/material_dynamic_secondary80</item>
-        <item name="colorSecondaryContainer">@color/material_dynamic_secondary30</item>
-        <item name="colorOnSecondary">@color/material_dynamic_secondary20</item>
-        <item name="colorOnSecondaryContainer">@color/material_dynamic_secondary90</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryContainer</item>
-        <!-- Customize your theme here. -->
-    </style>
+    <style name="Theme.WaktuShalat" parent="Theme.Material3.Dark"></style>
 </resources>

@@ -10,8 +10,7 @@
     <string name="retry">Coba lagi</string>
     <string name="location">Lokasi</string>
     <string name="save">Simpan</string>
-    <string name="edit_date">Ubah Tanggal</string>
-    <string name="edit_loc">Ubah Lokasi</string>
+    <string name="edit_date">Ubah tanggal</string>
     <string name="fajr">Subuh</string>
     <string name="dhuhr">Dzuhur</string>
     <string name="asr">Ashar</string>
@@ -20,4 +19,5 @@
     <string name="auto">Otomatis</string>
     <string name="latitude">Lintang</string>
     <string name="longitude">Bujur</string>
+    <string name="cancel">Batal</string>
 </resources>
