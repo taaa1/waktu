@@ -27,7 +27,7 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.switchmaterial.SwitchMaterial
-import java.text.SimpleDateFormat
+import java.text.DateFormat.*
 import java.util.*
 
 var dat: Calendar = Calendar.getInstance()
@@ -105,9 +105,9 @@ class MainActivity : AppCompatActivity() {
             par.adjustments = PrayerAdjustments(2, 0, 2, 2, 2, 2)
             par.madhab = Madhab.SHAFI
             val tim = PrayerTimes(cor, DateComponents.from(dat.time), par)
-            val form = SimpleDateFormat("hh:mm a")
+            val form = getTimeInstance(SHORT)
             form.timeZone = TimeZone.getDefault()
-            var dt =
+            val dt =
                 arrayOf(
                     tim.fajr,
                     tim.sunrise,
@@ -122,7 +122,7 @@ class MainActivity : AppCompatActivity() {
                 add<TiFragment>(R.id.main_frag, args = bundle)
             }
             findViewById<TextView>(R.id.date).text =
-                SimpleDateFormat("E, dd MMM y").format(dat.time)
+                getDateInstance(FULL).format(dat.time)
             err = false
         } catch(it: Exception) {
             err = true
@@ -130,17 +130,17 @@ class MainActivity : AppCompatActivity() {
         showErr()
     }
 
-    fun showErr() {
-        if(err) {
+    private fun showErr() {
+        if (err) {
             MaterialAlertDialogBuilder(this)
                 .setTitle(getString(R.string.failed))
                 .setMessage(getString(R.string.error_load_times))
                 .setIcon(R.drawable.ic_baseline_error_24)
-                .setNeutralButton(getString(R.string.edit_location)) {d, _ ->
+                .setNeutralButton(getString(R.string.edit_location)) { d, _ ->
                     d.dismiss()
                     locate()
                 }
-                .setPositiveButton(getString(R.string.retry)) {d, _ ->
+                .setPositiveButton(getString(R.string.retry)) { d, _ ->
                     d.dismiss()
                     getL()
                 }
@@ -149,7 +149,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun locate() {
+    private fun locate() {
         val m = getSharedPreferences("Waktu Shalat", MODE_PRIVATE)
         val s = LayoutInflater.from(this).inflate(R.layout.coord, findViewById(R.id.top), false)
         val a = s.findViewById<EditText>(R.id.latitude)
