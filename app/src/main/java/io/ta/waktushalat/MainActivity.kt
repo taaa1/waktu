@@ -100,7 +100,7 @@ class MainActivity : AppCompatActivity() {
         try {
             val cor = Coordinates(it.latitude, it.longitude)
             findViewById<TextView>(R.id.loc).text =
-                it.latitude.toString() + ", " + it.longitude.toString()
+                getString(R.string.lat_lon, it.latitude, it.longitude)
             val par = CalculationMethod.SINGAPORE.parameters
             par.adjustments = PrayerAdjustments(2, 0, 2, 2, 2, 2)
             par.madhab = Madhab.SHAFI
@@ -219,4 +219,3 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-

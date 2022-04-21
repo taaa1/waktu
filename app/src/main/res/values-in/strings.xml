@@ -21,4 +21,5 @@
     <string name="longitude">Bujur</string>
     <string name="cancel">Batal</string>
     <string name="sunrise">Terbit</string>
+    <string name="lat_lon">%1$f, %2$f</string>
 </resources>
