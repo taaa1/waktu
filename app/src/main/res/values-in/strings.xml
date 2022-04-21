@@ -20,4 +20,5 @@
     <string name="latitude">Lintang</string>
     <string name="longitude">Bujur</string>
     <string name="cancel">Batal</string>
+    <string name="sunrise">Terbit</string>
 </resources>

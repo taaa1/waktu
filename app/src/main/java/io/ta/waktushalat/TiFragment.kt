@@ -41,6 +41,7 @@ class TiFragment : Fragment() {
                         MyTiRecyclerViewAdapter(
                             arrayOf(
                                 getString(R.string.fajr),
+                                getString(R.string.sunrise),
                                 getString(R.string.dhuhr),
                                 getString(R.string.asr),
                                 getString(R.string.maghrib),

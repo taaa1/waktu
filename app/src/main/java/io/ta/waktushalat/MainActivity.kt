@@ -11,6 +11,7 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -25,7 +26,6 @@ import com.batoulapps.adhan.data.DateComponents
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.switchmaterial.SwitchMaterial
 import java.text.SimpleDateFormat
 import java.util.*
@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-            findViewById<FloatingActionButton>(R.id.tangg).hide()
+            findViewById<Button>(R.id.tangg).visibility = View.GONE
         }
 
         findViewById<Button>(R.id.tangg).setOnClickListener { change() }
@@ -108,7 +108,14 @@ class MainActivity : AppCompatActivity() {
             val form = SimpleDateFormat("hh:mm a")
             form.timeZone = TimeZone.getDefault()
             var dt =
-                arrayOf(tim.fajr, tim.dhuhr, tim.asr, tim.maghrib, tim.isha).map { form.format(it) }
+                arrayOf(
+                    tim.fajr,
+                    tim.sunrise,
+                    tim.dhuhr,
+                    tim.asr,
+                    tim.maghrib,
+                    tim.isha
+                ).map { form.format(it) }
             val bundle = bundleOf("data" to dt)
             supportFragmentManager.commit {
                 setReorderingAllowed(true)
