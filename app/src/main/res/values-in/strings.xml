@@ -22,4 +22,8 @@
     <string name="cancel">Batal</string>
     <string name="sunrise">Terbit</string>
     <string name="lat_lon">%1$f, %2$f</string>
+    <string name="title_activity_settings">Pengaturan</string>
+    <string name="calculation">Kalkulasi</string>
+    <string name="home">Beranda</string>
+    <string name="calculation_method">Metode Kalkulasi</string>
 </resources>
