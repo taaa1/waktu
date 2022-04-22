@@ -26,6 +26,9 @@ import com.google.android.material.switchmaterial.SwitchMaterial
 import java.text.DateFormat
 import java.util.*
 
+var dat: Calendar = Calendar.getInstance()
+var err = false
+
 class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
