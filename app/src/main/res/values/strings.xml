@@ -25,4 +25,5 @@
     <string name="calculation">Calculation</string>
     <string name="home">Home</string>
     <string name="calculation_method">Calculation Method</string>
+    <string name="adjustment">Adjustment</string>
 </resources>

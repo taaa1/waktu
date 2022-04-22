@@ -7,5 +7,9 @@
             android:key="calcmethod"
             android:title="@string/calculation_method"
             android:defaultValue="MUSLIM_WORLD_LEAGUE" />
+
+        <Preference
+            android:fragment="io.ta.waktushalat.AdjustmentFrag"
+            android:title="@string/adjustment" />
     </PreferenceCategory>
 </PreferenceScreen>

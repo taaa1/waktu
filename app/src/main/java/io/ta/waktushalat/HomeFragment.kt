@@ -63,7 +63,8 @@ class HomeFragment : Fragment() {
                     "MUSLIM_WORLD_LEAGUE"
                 )!!
             ).parameters
-            par.adjustments = PrayerAdjustments(2, 0, 2, 2, 2, 2)
+            val ppp = d.map { shar.getString("adj_$it", "0")!!.toInt() }
+            par.adjustments = PrayerAdjustments(ppp[0], ppp[1], ppp[2], ppp[3], ppp[4], ppp[5])
             par.madhab = Madhab.SHAFI
             val tim = PrayerTimes(cor, DateComponents.from(dat.time), par)
             val form = DateFormat.getTimeInstance(DateFormat.SHORT)
@@ -182,11 +183,5 @@ class HomeFragment : Fragment() {
             l.longitude = s.getString("lon", "0.0")!!.toDouble()
             calculate(l)
         }
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance() =
-            HomeFragment().apply {}
     }
 }

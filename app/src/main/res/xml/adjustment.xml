@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:key="@string/adjustment">
+        <EditTextPreference
+            android:defaultValue="0"
+            android:key="adj_fajr"
+            android:title="@string/fajr" />
+        <EditTextPreference
+            android:defaultValue="0"
+            android:key="adj_sunrise"
+            android:title="@string/sunrise" />
+        <EditTextPreference
+            android:defaultValue="0"
+            android:key="adj_dhuhr"
+            android:title="@string/dhuhr" />
+        <EditTextPreference
+            android:defaultValue="0"
+            android:key="adj_asr"
+            android:title="@string/asr" />
+        <EditTextPreference
+            android:defaultValue="0"
+            android:key="adj_maghrib"
+            android:title="@string/maghrib" />
+        <EditTextPreference
+            android:defaultValue="0"
+            android:key="adj_isha"
+            android:title="@string/isha" />
+    </PreferenceCategory>
+</PreferenceScreen>
