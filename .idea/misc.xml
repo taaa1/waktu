@@ -10,9 +10,10 @@
         <entry key="app/src/main/res/layout-w600dp/activity_main.xml" value="0.27531645569620256" />
         <entry key="app/src/main/res/layout-w600dp/main_layout.xml" value="0.12709620476610767" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/city_item.xml" value="0.2894399315946986" />
         <entry key="app/src/main/res/layout/coord.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.2894399315946986" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1470713980333476" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_item.xml" value="0.2342896174863388" />
         <entry key="app/src/main/res/layout/fragment_item_list.xml" value="0.2342896174863388" />
         <entry key="app/src/main/res/layout/fragment_load.xml" value="0.13424540401881147" />

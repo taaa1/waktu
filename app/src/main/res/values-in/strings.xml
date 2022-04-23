@@ -28,5 +28,5 @@
     <string name="calculation_method">Metode Kalkulasi</string>
     <string name="adjustment">Penyesuaian</string>
     <string name="search">Cari…</string>
-    <string name="tz_info_text">Semua waktu ditampilkan dalam zona waktu perangkat</string>
+    <string name="tz_info_text">Dikalkulasi secara luring — semua waktu ditampilkan dalam zona waktu perangkat</string>
 </resources>
