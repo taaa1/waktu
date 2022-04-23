@@ -26,5 +26,6 @@
     <string name="home">Home</string>
     <string name="calculation_method">Calculation Method</string>
     <string name="adjustment">Adjustment</string>
-    <string name="search">Search...</string>
+    <string name="search">Search…</string>
+    <string name="tz_info_text">Times in device time zone</string>
 </resources>
