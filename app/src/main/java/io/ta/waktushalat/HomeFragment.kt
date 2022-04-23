@@ -1,10 +1,8 @@
 package io.ta.waktushalat
 
 import android.annotation.SuppressLint
-import android.app.DatePickerDialog
 import android.content.SharedPreferences
 import android.location.Location
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +19,7 @@ import androidx.preference.PreferenceManager
 import com.batoulapps.adhan.*
 import com.batoulapps.adhan.data.DateComponents
 import com.google.android.gms.location.LocationServices
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.switchmaterial.SwitchMaterial
 import java.text.DateFormat
@@ -41,10 +40,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-            requireView().findViewById<Button>(R.id.tangg).visibility = View.GONE
-        }
 
         requireView().findViewById<Button>(R.id.tangg).setOnClickListener { change() }
         requireView().findViewById<Button>(R.id.editloc).setOnClickListener { locate() }
@@ -116,8 +111,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun locate() {
-        val m =
-            requireContext().getSharedPreferences("Waktu Shalat", AppCompatActivity.MODE_PRIVATE)
+        val m = shar
         val s = LayoutInflater.from(requireContext())
             .inflate(R.layout.coord, requireView().findViewById(R.id.top), false)
         val a = s.findViewById<EditText>(R.id.latitude)
@@ -156,20 +150,10 @@ class HomeFragment : Fragment() {
             .show()
     }
 
-    @SuppressLint("NewApi")
-    fun change() {
-        val dp = DatePickerDialog(requireContext())
-        dp.updateDate(
-            dat.get(Calendar.YEAR),
-            dat.get(Calendar.MONTH),
-            dat.get(Calendar.DAY_OF_MONTH)
-        )
-        dp.show()
-        dp.setOnDateSetListener(
-            fun(_, y, m, d) {
-                dat.set(y, m, d)
-                getL()
-            })
+    private fun change() {
+        val dp = MaterialDatePicker.Builder.datePicker().setSelection(dat.timeInMillis).build()
+        dp.addOnPositiveButtonClickListener { dat.timeInMillis = it; getL() }
+        dp.show(requireActivity().supportFragmentManager, "date")
     }
 
     @SuppressLint("MissingPermission")
