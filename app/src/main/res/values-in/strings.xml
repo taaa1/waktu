@@ -27,4 +27,5 @@
     <string name="home">Beranda</string>
     <string name="calculation_method">Metode Kalkulasi</string>
     <string name="adjustment">Penyesuaian</string>
+    <string name="search">Cari...</string>
 </resources>
