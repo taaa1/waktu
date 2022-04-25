@@ -1,29 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:key="@string/adjustment">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/adjustment">
         <EditTextPreference
             android:defaultValue="0"
             android:key="adj_fajr"
-            android:title="@string/fajr" />
+            android:title="@string/fajr"
+            app:useSimpleSummaryProvider="true" />
         <EditTextPreference
             android:defaultValue="0"
             android:key="adj_sunrise"
-            android:title="@string/sunrise" />
+            android:title="@string/sunrise"
+            app:useSimpleSummaryProvider="true" />
         <EditTextPreference
             android:defaultValue="0"
             android:key="adj_dhuhr"
-            android:title="@string/dhuhr" />
+            android:title="@string/dhuhr"
+            app:useSimpleSummaryProvider="true" />
         <EditTextPreference
             android:defaultValue="0"
             android:key="adj_asr"
-            android:title="@string/asr" />
+            android:title="@string/asr"
+            app:useSimpleSummaryProvider="true" />
         <EditTextPreference
             android:defaultValue="0"
             android:key="adj_maghrib"
-            android:title="@string/maghrib" />
+            android:title="@string/maghrib"
+            app:useSimpleSummaryProvider="true" />
         <EditTextPreference
             android:defaultValue="0"
             android:key="adj_isha"
-            android:title="@string/isha" />
+            android:title="@string/isha"
+            app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 </PreferenceScreen>
