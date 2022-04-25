@@ -66,7 +66,7 @@ class HomeFragment : Fragment() {
             println(shar.getString("calcmethod", "MUSLIM_WORLD_LEAGUE")!!)
             val par = CalculationMethod.valueOf(
                 shar.getString(
-                    "calc_method",
+                    "calcmethod",
                     "MUSLIM_WORLD_LEAGUE"
                 )!!
             ).parameters
