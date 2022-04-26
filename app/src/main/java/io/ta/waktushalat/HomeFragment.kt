@@ -2,7 +2,10 @@ package io.ta.waktushalat
 
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
+import android.icu.text.DateFormat.FULL
+import android.icu.util.IslamicCalendar
 import android.location.Location
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -46,12 +49,30 @@ class HomeFragment : Fragment() {
     }
 
     lateinit var shar: SharedPreferences
+    var p = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        requireView().findViewById<Button>(R.id.tangg).setOnClickListener { change() }
-        requireView().findViewById<Button>(R.id.editloc).setOnClickListener { locate() }
+        with(requireView()) {
+            this.findViewById<Button>(R.id.tangg).setOnClickListener { change() }
+            this.findViewById<Button>(R.id.editloc).setOnClickListener { locate() }
+            val d = this.findViewById<TextView>(R.id.date)
+            d.setOnClickListener {
+                p = !p
+                if (p) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                        val s = android.icu.text.DateFormat.getDateInstance(FULL)
+                        s.calendar = IslamicCalendar()
+                        (it as TextView).text = s.format(IslamicCalendar())
+                    }
+                } else {
+                    (it as TextView).text =
+                        DateFormat.getDateInstance(DateFormat.FULL).format(dat.time)
+                }
+            }
+            d.text = DateFormat.getDateInstance(DateFormat.FULL).format(dat.time)
+        }
 
         shar = PreferenceManager.getDefaultSharedPreferences(requireContext())
 
@@ -90,8 +111,6 @@ class HomeFragment : Fragment() {
                 setReorderingAllowed(true)
                 add<TiFragment>(R.id.main_frag, args = bundle)
             }
-            requireView().findViewById<TextView>(R.id.date).text =
-                DateFormat.getDateInstance(DateFormat.FULL).format(dat.time)
             err = false
         } catch (it: Exception) {
             println(it.message)
