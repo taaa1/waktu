@@ -28,4 +28,16 @@
     <string name="adjustment">Adjustment</string>
     <string name="search">Search…</string>
     <string name="tz_info_text">Calculated offline — times in device time zone</string>
+    <string name="m_1">Al-Muḥarram</string>
+    <string name="m_2">Ṣafar</string>
+    <string name="m_3">Rabīʿ al-ʾAwwal</string>
+    <string name="m_4">Rabīʿ ath-Thānī</string>
+    <string name="m_5">Jumadā al-ʾŪlā</string>
+    <string name="m_6">Jumādā ath-Thāniyah</string>
+    <string name="m_7">Rajab</string>
+    <string name="m_8">Shaʿbān</string>
+    <string name="m_9">Ramaḍān</string>
+    <string name="m_10">Shawwāl</string>
+    <string name="m_11">Ḏū al-Qaʿdah</string>
+    <string name="m_12">Ḏū al-Ḥijjah</string>
 </resources>

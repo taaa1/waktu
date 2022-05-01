@@ -2,7 +2,8 @@ package io.ta.waktushalat
 
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
-import android.icu.text.DateFormat.FULL
+import android.icu.text.DateFormatSymbols
+import android.icu.text.SimpleDateFormat
 import android.icu.util.IslamicCalendar
 import android.location.Location
 import android.os.Build
@@ -62,7 +63,23 @@ class HomeFragment : Fragment() {
                 p = !p
                 if (p) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                        val s = android.icu.text.DateFormat.getDateInstance(FULL)
+                        val s = SimpleDateFormat("EEEE, d MMMM yyyy", Locale.getDefault())
+                        val p = DateFormatSymbols()
+                        p.months = arrayOf(
+                            getString(R.string.m_1),
+                            getString(R.string.m_2),
+                            getString(R.string.m_3),
+                            getString(R.string.m_4),
+                            getString(R.string.m_5),
+                            getString(R.string.m_6),
+                            getString(R.string.m_7),
+                            getString(R.string.m_8),
+                            getString(R.string.m_9),
+                            getString(R.string.m_10),
+                            getString(R.string.m_11),
+                            getString(R.string.m_12)
+                        )
+                        s.dateFormatSymbols = p
                         s.calendar = IslamicCalendar()
                         (it as TextView).text = s.format(IslamicCalendar(dat.time))
                     }
