@@ -64,7 +64,7 @@ class HomeFragment : Fragment() {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                         val s = android.icu.text.DateFormat.getDateInstance(FULL)
                         s.calendar = IslamicCalendar()
-                        (it as TextView).text = s.format(IslamicCalendar())
+                        (it as TextView).text = s.format(IslamicCalendar(dat.time))
                     }
                 } else {
                     (it as TextView).text =
