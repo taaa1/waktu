@@ -227,7 +227,14 @@ class HomeFragment : Fragment() {
     ) {
         if (!sel) {
             val req = Request.Builder()
-                .url("https://photon.komoot.io/api/?q=${URLEncoder.encode(search, "utf-8")}")
+                .url(
+                    "https://nominatim.openstreetmap.org/search?format=json&city=${
+                        URLEncoder.encode(
+                            search,
+                            "utf-8"
+                        )
+                    }"
+                )
                 .build()
 
             client.newCall(req).enqueue(object : Callback {
@@ -238,20 +245,17 @@ class HomeFragment : Fragment() {
                                 val q =
                                     Gson().fromJson(
                                         response.body!!.string(),
-                                        t::class.java
-                                    ).features
+                                        Array<feature>::class.java
+                                    )
 
-                                val p = q.map {
-                                    val o = it.properties
-                                    "${o?.name}, ${o?.country}"
-                                }
+                                val p = q.map { it.display_name }
                                 d.setAdapter(ArrayAdapter(requireContext(), R.layout.city_item, p))
                                 d.showDropDown()
                                 d.setOnItemClickListener { _, _, i, _ ->
                                     sel = true
-                                    val r = q[i].geometry.coordinates
-                                    a.setText(r[1].toString())
-                                    b.setText(r[0].toString())
+                                    val r = q[i]
+                                    a.setText(r.lat.toString())
+                                    b.setText(r.lon.toString())
                                 }
                             }
                         }
