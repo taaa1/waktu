@@ -6,6 +6,7 @@ import android.icu.text.DateFormatSymbols
 import android.icu.text.SimpleDateFormat
 import android.icu.util.IslamicCalendar
 import android.location.Location
+import android.location.LocationManager.GPS_PROVIDER
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
@@ -17,6 +18,10 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.core.content.getSystemService
+import androidx.core.location.LocationManagerCompat
+import androidx.core.os.CancellationSignal
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
@@ -24,7 +29,6 @@ import androidx.fragment.app.replace
 import androidx.preference.PreferenceManager
 import com.batoulapps.adhan.*
 import com.batoulapps.adhan.data.DateComponents
-import com.google.android.gms.location.LocationServices
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.switchmaterial.SwitchMaterial
@@ -275,11 +279,25 @@ class HomeFragment : Fragment() {
         dp.show(requireActivity().supportFragmentManager, "date")
     }
 
+    private var gpscan = CancellationSignal()
+
     @SuppressLint("MissingPermission")
     fun getL() {
+        requireActivity().supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            replace<Loading>(R.id.main_frag)
+        }
+        if (gpscan.isCanceled) gpscan = CancellationSignal()
         if (shar.getBoolean("auto", true)) {
-            LocationServices.getFusedLocationProviderClient(requireContext()).lastLocation.addOnSuccessListener {
-                calculate(it)
+            LocationManagerCompat.getCurrentLocation(
+                requireContext().getSystemService()!!,
+                GPS_PROVIDER,
+                gpscan,
+                ContextCompat.getMainExecutor(requireContext())
+            ) {
+                if (!gpscan.isCanceled) {
+                    if (shar.getBoolean("auto", true)) calculate(it)
+                }
             }
         } else {
             val l = Location("")
