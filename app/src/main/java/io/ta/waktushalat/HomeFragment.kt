@@ -136,7 +136,6 @@ class HomeFragment : Fragment() {
                 setReorderingAllowed(true)
                 replace<TiFragment>(R.id.main_frag, args = bundle)
             }
-            reDate()
             err = false
         } catch (it: Exception) {
             println(it.message)
@@ -213,6 +212,7 @@ class HomeFragment : Fragment() {
                         y.putBoolean("auto", false)
                         y.putString("lat", a.text.toString())
                         y.putString("lon", b.text.toString())
+                        gpscan.cancel()
                     }
                 }
                 y.apply()
@@ -283,6 +283,7 @@ class HomeFragment : Fragment() {
 
     @SuppressLint("MissingPermission")
     fun getL() {
+        reDate()
         requireActivity().supportFragmentManager.commit {
             setReorderingAllowed(true)
             replace<Loading>(R.id.main_frag)
@@ -296,7 +297,7 @@ class HomeFragment : Fragment() {
                 ContextCompat.getMainExecutor(requireContext())
             ) {
                 if (!gpscan.isCanceled) {
-                    if (shar.getBoolean("auto", true)) calculate(it)
+                    calculate(it)
                 }
             }
         } else {
