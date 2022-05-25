@@ -24,19 +24,17 @@ import androidx.fragment.app.replace
 import androidx.preference.PreferenceManager
 import com.batoulapps.adhan.*
 import com.batoulapps.adhan.data.DateComponents
-import com.beust.klaxon.JsonObject
-import com.beust.klaxon.Klaxon
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.textfield.TextInputEditText
+import com.google.gson.Gson
 import okhttp3.*
 import java.io.IOException
 import java.net.URLEncoder
 import java.text.DateFormat
 import java.util.*
-
 
 var dat: Calendar = Calendar.getInstance()
 var err = false
@@ -238,17 +236,20 @@ class HomeFragment : Fragment() {
                         requireActivity().runOnUiThread {
                             if (search == d.text.toString()) {
                                 val q =
-                                    Klaxon().parse<Map<String, List<JsonObject>>>(response.body!!.string())!!["features"]!!
+                                    Gson().fromJson(
+                                        response.body!!.string(),
+                                        t::class.java
+                                    ).features
 
                                 val p = q.map {
-                                    val o = it.obj("properties")
-                                    "${o?.string("name")}, ${o?.string("country")}"
+                                    val o = it.properties
+                                    "${o?.name}, ${o?.country}"
                                 }
                                 d.setAdapter(ArrayAdapter(requireContext(), R.layout.city_item, p))
                                 d.showDropDown()
                                 d.setOnItemClickListener { _, _, i, _ ->
                                     sel = true
-                                    val r = q[i].obj("geometry")!!.array<Float>("coordinates")!!
+                                    val r = q[i].geometry.coordinates
                                     a.setText(r[1].toString())
                                     b.setText(r[0].toString())
                                 }
