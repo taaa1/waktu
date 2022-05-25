@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -29,13 +29,11 @@ class TiFragment : Fragment() {
         val dt = arguments?.get("data") as ArrayList<String>?
 
         val view = inflater.inflate(R.layout.fragment_item_list, container, false)
+        val layout = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
         if (view is RecyclerView) {
             with(view) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
+                layoutManager = layout
                 adapter =
                     dt?.let {
                         MyTiRecyclerViewAdapter(
@@ -50,6 +48,12 @@ class TiFragment : Fragment() {
                             it
                         )
                     }
+                addItemDecoration(
+                    DividerItemDecoration(
+                        context,
+                        layout.orientation
+                    )
+                )
             }
         }
         return view
