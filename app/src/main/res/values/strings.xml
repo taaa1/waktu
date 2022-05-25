@@ -26,8 +26,8 @@
     <string name="home">Home</string>
     <string name="calculation_method">Calculation Method</string>
     <string name="adjustment">Adjustment</string>
-    <string name="search">Search…</string>
-    <string name="tz_info_text">Calculated offline — times in device time zone</string>
+    <string name="search">Search… (experimental)</string>
+    <string name="tz_info_text">Times in device time zone</string>
     <string name="m_1">Al-Muḥarram</string>
     <string name="m_2">Ṣafar</string>
     <string name="m_3">Rabīʿ al-ʾAwwal</string>
@@ -40,4 +40,5 @@
     <string name="m_10">Shawwāl</string>
     <string name="m_11">Ḏū al-Qaʿdah</string>
     <string name="m_12">Ḏū al-Ḥijjah</string>
+    <string name="adj_desc">Adjust the generated prayer times by adding a few minutes to the result. Negative values are accepted.</string>
 </resources>

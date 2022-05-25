@@ -12,6 +12,7 @@
 
         <Preference
             android:fragment="io.ta.waktushalat.AdjustmentFrag"
+            android:summary="@string/adj_desc"
             android:title="@string/adjustment" />
     </PreferenceCategory>
 </PreferenceScreen>
