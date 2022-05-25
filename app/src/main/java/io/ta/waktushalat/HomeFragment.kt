@@ -19,8 +19,8 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.add
 import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import androidx.preference.PreferenceManager
 import com.batoulapps.adhan.*
 import com.batoulapps.adhan.data.DateComponents
@@ -126,7 +126,7 @@ class HomeFragment : Fragment() {
             val bundle = bundleOf("data" to dt)
             requireActivity().supportFragmentManager.commit {
                 setReorderingAllowed(true)
-                add<TiFragment>(R.id.main_frag, args = bundle)
+                replace<TiFragment>(R.id.main_frag, args = bundle)
             }
             err = false
         } catch (it: Exception) {
