@@ -61,39 +61,45 @@ class HomeFragment : Fragment() {
             val d = this.findViewById<TextView>(R.id.date)
             d.setOnClickListener {
                 p = !p
-                if (p) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                        val s = SimpleDateFormat("EEEE, d MMMM yyyy", Locale.getDefault())
-                        val p = DateFormatSymbols()
-                        p.months = arrayOf(
-                            getString(R.string.m_1),
-                            getString(R.string.m_2),
-                            getString(R.string.m_3),
-                            getString(R.string.m_4),
-                            getString(R.string.m_5),
-                            getString(R.string.m_6),
-                            getString(R.string.m_7),
-                            getString(R.string.m_8),
-                            getString(R.string.m_9),
-                            getString(R.string.m_10),
-                            getString(R.string.m_11),
-                            getString(R.string.m_12)
-                        )
-                        s.dateFormatSymbols = p
-                        s.calendar = IslamicCalendar()
-                        (it as TextView).text = s.format(IslamicCalendar(dat.time))
-                    }
-                } else {
-                    (it as TextView).text =
-                        DateFormat.getDateInstance(DateFormat.FULL).format(dat.time)
-                }
+                reDate()
             }
-            d.text = DateFormat.getDateInstance(DateFormat.FULL).format(dat.time)
         }
 
         shar = PreferenceManager.getDefaultSharedPreferences(requireContext())
 
         getL()
+    }
+
+    private fun reDate() {
+        with(requireView()) {
+            val it: TextView = findViewById(R.id.date)
+            if (p) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    val s = SimpleDateFormat("EEEE, d MMMM yyyy", Locale.getDefault())
+                    val p = DateFormatSymbols()
+                    p.months = arrayOf(
+                        getString(R.string.m_1),
+                        getString(R.string.m_2),
+                        getString(R.string.m_3),
+                        getString(R.string.m_4),
+                        getString(R.string.m_5),
+                        getString(R.string.m_6),
+                        getString(R.string.m_7),
+                        getString(R.string.m_8),
+                        getString(R.string.m_9),
+                        getString(R.string.m_10),
+                        getString(R.string.m_11),
+                        getString(R.string.m_12)
+                    )
+                    s.dateFormatSymbols = p
+                    s.calendar = IslamicCalendar()
+                    it.text = s.format(IslamicCalendar(dat.time))
+                }
+            } else {
+                it.text =
+                    DateFormat.getDateInstance(DateFormat.FULL).format(dat.time)
+            }
+        }
     }
 
     private fun calculate(it: Location) {
@@ -128,6 +134,7 @@ class HomeFragment : Fragment() {
                 setReorderingAllowed(true)
                 replace<TiFragment>(R.id.main_frag, args = bundle)
             }
+            reDate()
             err = false
         } catch (it: Exception) {
             println(it.message)
