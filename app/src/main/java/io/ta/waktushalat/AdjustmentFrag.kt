@@ -13,6 +13,10 @@ class AdjustmentFrag : PreferenceFragmentCompat() {
             findPreference<EditTextPreference>("adj_$s")?.setOnBindEditTextListener {
                 it.inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_SIGNED
             }
+            findPreference<EditTextPreference>("adj_$s")?.setOnPreferenceChangeListener { a, b ->
+                if (b.toString().isBlank()) (a as EditTextPreference).text = "0"
+                return@setOnPreferenceChangeListener b.toString().toIntOrNull() != null
+            }
         }
     }
 }
